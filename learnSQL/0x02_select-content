@@ -1,0 +1,20 @@
+SELECT * FROM employee_id
+--prints all the content of the employee_id table
+
+SELECT TOP 6 * FROM employee_id
+--prints the top 6 rows of the table 
+
+SELECT DISTINCT(id) FROM employee_id
+--selects specific information from the table
+
+SELECT max(id) FROM employee_id
+SELECT min(id) FROM employee_id
+SELECT avg(id) FROM employee_id
+--selects maximum, minimum or average value for int or decimal data types
+
+SELECT COUNT(id) FROM employee_id
+--gives the total number of entries for the id column of the employee_id table
+
+SELECT id FROM employee_id AS ticket_id
+--prints the selected with the name ticket_id
+
