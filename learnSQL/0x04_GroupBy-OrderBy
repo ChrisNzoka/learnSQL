@@ -28,4 +28,5 @@ GROUP BY gender
 SELECT age, count(age) AS ageCount
 FROM employee_id
 GROUP BY age
---groups the data by age giving the total number of people with each age as ageCount column 
+--groups the data by age giving the total number of people with each age as ageCount column
+
