@@ -2,6 +2,10 @@ SELECT * FROM employee_id
 WHERE firstname = 'Chris'
 --selcts only rows with 'Chris' as first name
 
+SELECT * FROM station_data
+WHERE year = 2010;
+--selects only records with year = 2010
+
 SELECT * FROM employee_id
 WHERE age <> 26
 --selcts only rows where age is not equal to 26
