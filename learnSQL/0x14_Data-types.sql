@@ -1,4 +1,4 @@
-### String Data Types
+# String Data Types
 CHAR(size)	FIXED length string of chars. Size from 0 to 255. Default 1.
 VARCHAR(size) VARIABLE length string of chars. Size from 0 to 65535.
 BINARY(size) Equal to CHAR(), but stores binary byte strings. Default 1.
@@ -30,6 +30,7 @@ DOUBLE(size, d)	Normal-size floating point. Digits after "," defined by d.
 DOUBLE PRECISION(size, d)	 
 DECIMAL(size, d) Exact fixed-point number.
 DEC(size, d)	Equal to DECIMAL(size,d)
+NUMERIC -- Another type of float 
 
 ### Date and Time Data Types
 DATE	A date. Format: YYYY-MM-DD. Range: ('1000-01-01' to '9999-12-31')
