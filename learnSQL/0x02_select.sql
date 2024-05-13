@@ -106,3 +106,15 @@ SELECT
 FROM
     CUSTOMER;
 
+-- we can use count and distinct to count the exact number of unique entiries in a table.
+-- Count the distinct countries from the films table
+SELECT 
+    COUNT(DISTINCT country) count_distinct_countries
+FROM
+    films;
+-- If we reverse the keyword location, it;ll count first befor executing the distinct which multiplies the count value by itself
+SELECT DISTINCT
+    COUNT(country) count_distinct_countries
+FROM
+    films;
+--    The above querry will work but it'll give the wrong value.
