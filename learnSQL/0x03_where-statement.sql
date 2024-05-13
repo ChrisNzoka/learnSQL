@@ -83,8 +83,8 @@ SELECT
 FROM
     employee_id
 WHERE
-    lastname LIKE 'M%e';
--- returns lastname starting with M and ending with e
+    lastname NOT LIKE 'M%e';
+-- returns lastname that does not start with M and not ending with e
 
 SELECT 
     *
@@ -115,6 +115,9 @@ FROM
  WHERE first_name LIKE 'T___%';
  -- here, the 3 underscore character specifies that three characters should come after the letter T, then (with the %) any other thing can follow
 
+-- The percent wildcard will match zero, one, or many characters in the text.
+-- The underscore wildcard will match a single character. 
+
 SELECT 
     *
 FROM
@@ -138,3 +141,47 @@ FROM
 WHERE
     lastname IN ('Nzoka-okoye' , 'Scott');
 -- returns data for only the specified lastnames(alternative to using = multiple times)
+
+-- the IN keyword
+SELECT 
+    title
+FROM
+    films
+WHERE
+    release_year = 1904
+        OR release_year = 1925
+        OR release_year = 1934;
+
+-- we can rewrite the query abouve usin IN
+SELECT 
+    title
+FROM
+    films
+WHERE
+    release_year IN (1904, 1925, 1934);
+    
+-- Count the unique titles
+SELECT 
+    COUNT(DISTINCT title) AS nineties_english_films_for_teens
+FROM
+    films
+WHERE
+    (release_year BETWEEN 1990 AND 1999)
+        AND (language = 'English')
+        AND certification IN ('G' , 'PG', 'PG-13');
+
+-- NULL
+SELECT 
+    COUNT(*) AS no_deathdates
+FROM
+    people
+WHERE
+    deathdate IS NULL;
+
+
+SELECT 
+    COUNT(*) AS no_birthdates
+FROM
+    people
+WHERE
+    birthday IS NOT NULL;
