@@ -20,25 +20,6 @@ FROM
     employee_id;
 -- selects specific information from the table
 
-SELECT 
-    MAX(id)
-FROM
-    employee_id;
-SELECT 
-    MIN(id)
-FROM
-    employee_id;
-SELECT 
-    AVG(id)
-FROM
-    employee_id;
--- selects maximum, minimum or average value for int or decimal data types
-
-SELECT 
-    COUNT(id)
-FROM
-    employee_id;
--- gives the total number of entries for the id column of the employee_id table
 
 SELECT 
     id
