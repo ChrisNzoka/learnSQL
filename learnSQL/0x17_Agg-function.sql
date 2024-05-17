@@ -103,3 +103,9 @@ SELECT
     ROUND(AVG(budget), - 3) avg_budget_thousands
 FROM
     films;
+    
+-- Calculate the percentage of people who are no longer alive
+SELECT 
+    COUNT(deathdate) * 100.0 / COUNT(*) AS percentage_dead
+FROM
+    people;

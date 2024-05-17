@@ -19,4 +19,14 @@ WHERE
 # error: column "max_budget" does not exist
 # LINE %: WHERE max_budget IS NOT NUL;
 
--- 
+-- Calculate the title and duration_hours from films
+SELECT 
+    title, (duration / 60.0) AS duration_hours
+FROM
+    films;
+    
+-- Calculate the percentage of people who are no longer alive
+SELECT 
+    COUNT(deathdate) * 100.0 / COUNT(*) AS percentage_dead
+FROM
+    people;
