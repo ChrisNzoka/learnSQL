@@ -1,3 +1,6 @@
+-- Order by
+-- Sorts in ascending order by default
+
 SELECT 
     *
 FROM
@@ -12,12 +15,15 @@ FROM
 ORDER BY age;
 -- arranges the table in order of age (the default order in SQL is ascending)
 
+-- We can also order by multiple fields
 SELECT 
     *
 FROM
     employee_id
+WHERE age is not null
 ORDER BY gender, age DESC;
 -- arranges the table in Ascending order of gender and descending order of age
+-- Also, 'is not null' ensures that only records with a recorded age is outputed
 
 SELECT 
     *
@@ -27,11 +33,12 @@ ORDER BY  age, gender DESC;
 -- arranges the table in Ascending order of age and descending order of gender
 -- (however, the age querry takes prescedence here making the gender useless)
 
+-- We don't have to select the field we are sorting by
 SELECT 
-    *
+    first_name
 FROM
     employee_demographics
-ORDER BY gender DESC , age DESC;
+ORDER BY age DESC;
 
 SELECT 
     *
