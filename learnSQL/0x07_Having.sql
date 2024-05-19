@@ -75,3 +75,21 @@ FROM
     films
 GROUP BY release_year
 HAVING avg(duration) > 10;
+
+/*
+HAVING and sorting
+Filtering and sorting go hand in hand and gives you greater interpretability by ordering our results.
+
+Let's see this magic at work by writing a query showing what countries have the highest average film budgets.
+*/
+
+-- Select the country and average_budget from films
+SELECT 
+    country, ROUND(AVG(budget), 2) average_budget
+FROM
+    films
+GROUP BY country
+-- Filter to countries with an average_budget of more than one billion
+HAVING AVG(budget) > 1000000000
+ORDER BY average_budget DESC;
+
