@@ -3,7 +3,15 @@
 -- joins allow you to combine 2 tables together (or more) if they have a common column.
 -- doesn't mean they need the same column name, but the data in it are the same and can be used to join the tables together
 -- there are several joins we will look at today, inner joins, outer joins, and self joins
-
+/* Also, the order of execution is:
+FROM
+WHERE
+GROUP BY
+HAVING
+SELECT
+ORDER BY
+LIMIT.
+*/
 
 -- here are the first 2 tables - let's see what columns and data in the rows we have in common that we can join on
 SELECT *
@@ -150,3 +158,22 @@ JOIN employee_salary sal
     ON dem.employee_id = sal.employee_id
 Join parks_departments pd
 on sal.dept_id = pd.department_id;
+
+-- Using USING
+# When joining on two identical column names, we can employ the USING command
+# followed by the shared column name in parentheses.
+# Here, since the join field is named "employee_id" in both tables, we can use USING.
+
+SELECT 
+    dem.employee_id,
+    dem.first_name,
+    dem.last_name,
+    age,
+    gender,
+    occupation,
+    salary
+FROM
+    employee_demographics dem
+        JOIN
+    employee_salary sal USING (employee_id);
+        
