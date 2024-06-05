@@ -1,3 +1,8 @@
+-- before we create tables, we can create schemas that carry the tables as follows
+CREATE SCHEMA `parks_and_recreation`;
+-- notably, this is usually run at the begining of the script
+
+-- Now, let's create our tables
 CREATE TABLE employee_id
 (ID int,
 firstname varchar (50),

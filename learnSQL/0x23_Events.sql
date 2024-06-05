@@ -32,3 +32,8 @@ END $$
 -- if we run it again you can see Jerry is now fired -- or I mean retired
 SELECT * 
 FROM parks_and_recreation.employee_demographics;
+
+# To troubleshoot wehn an event doesnt work, we can check the event variable to see if it's turned on
+SHOW VARIABLES; -- shows all variables
+-- We can specify a specific variable
+SHOW VARIABLES LIKE '%event%'; -- checks for event related variable. we can just pick out the even scheduler to ensure its ON
