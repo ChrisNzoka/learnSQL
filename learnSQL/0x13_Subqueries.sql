@@ -1,12 +1,11 @@
 # Subqueries
 
-#So subqueries are queries within queries. Let's see how this looks.
+#Subqueries are queries within queries.
 -- Note that subqueries in a select statement are seen as a separate column
 -- While subqueries in from statement are as table and must be named using alias.
 
 SELECT *
 FROM employee_demographics;
-
 
 #Now let's say we wanted to look at employees who actually work in the Parks and Rec Department, we could join tables together or we could use a subquery
 #We can do that like this:
@@ -23,7 +22,7 @@ WHERE
         WHERE
             dept_id = 1);
 
-#So we are using that subquery in the where statement and if we just highlight the subquery and run it it's basically a list we are selecting from in the outer query
+#So we are using that subquery in the where statement and if we just highlight the subquery and run it, it's basically a list we are selecting from in the outer query
 
 SELECT *
 FROM employee_demographics
@@ -35,11 +34,11 @@ WHERE employee_id IN
 # now if we try to have more than 1 column in the subquery like above, we get an error saying the operand should contain 1 column only
 
 #We can also use subqueries in the select and the from statements - let's see how we can do this
-
 -- Let's say we want to look at the salaries and compare them to the average salary
 
 SELECT first_name, salary, AVG(salary)
 FROM employee_salary;
+
 -- if we run this it's not going to work, we are using columns with an aggregate function so we need to use group by
 -- if we do that though we don't exactly get what we want
 SELECT first_name, salary, AVG(salary)

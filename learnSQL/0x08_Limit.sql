@@ -40,6 +40,7 @@ FROM
     employee_demographics
 ORDER BY age DESC;
 -- we can see it's Donna - let's try to select her
+
 SELECT 
     *
 FROM

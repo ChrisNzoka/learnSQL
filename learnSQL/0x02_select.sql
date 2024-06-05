@@ -9,10 +9,13 @@ SELECT
 FROM
     parks_and_recreation.employee_demographics;
     -- selects all the content of the table in the database specified in the format above (SCHEMA.TABLE)
-    -- where parks_and_recreation = SCHEMA and employee_demographics = Table
+    /* where;
+    parks_and_recreation = SCHEMA
+    employee_demographics = Table
+*/
 
 /*SELECT TOP 6 * FROM employee_id;
--- prints the top 6 rows of the table */
+-- prints the top 6 rows of the table for sqlserver flavour*/
 
 SELECT DISTINCT
     (id)
@@ -25,7 +28,7 @@ SELECT
     id
 FROM
     employee_id AS ticket_id;
--- prints the selected with the name ticket_id
+-- prints the selected field with the name ticket_id on display
 
 SELECT 
     *, firstname + ' ' + lastname AS display_name

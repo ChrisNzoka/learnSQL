@@ -106,12 +106,13 @@ order by title_count;
 -- and notice that we can refer back to the alias within the query.
 -- That is because of the order of execution.
 /*
-Our updated queries will begin with FROM
-followed by grouping
-selecting the data
-creating the alias
-sorting the results
-limiting them to the desired number.
+The order of execution here is:
+FROM
+GROUP
+SELECT
+ALIASING "AS"
+sorting the results "Order by"
+limiting them to the desired number "LIMIT"
 */
 
 

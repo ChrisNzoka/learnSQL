@@ -11,6 +11,7 @@ Comparison Operators
 < | Less than
 = | Equal to
 != | not equal to
+<> | not equal to
 >= | Greater than or equal to
 <= | Less than or equal to
 

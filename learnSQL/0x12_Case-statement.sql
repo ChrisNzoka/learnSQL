@@ -5,7 +5,8 @@ SELECT
 FROM
     employee_demographics;
 
-
+-- Case statements works the same way as "WHERE" and "HAVING". However, it allows for multiple filtering
+-- Also, case statements comes immediatelt after the select statement
 SELECT 
     first_name,
     last_name,

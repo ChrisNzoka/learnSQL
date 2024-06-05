@@ -1,4 +1,4 @@
--- String Functions.sql'
+-- String Functions
 -- Helps to change and look at strings differently.
 -- String functions creates a new column of information and keeps the parent column
 

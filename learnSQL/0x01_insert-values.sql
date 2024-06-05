@@ -18,4 +18,4 @@ INSERT INTO employee_salary VALUES
 (20240306, 'Regional Manager', 65000),
 (20240307, 'Supplier Relations', 41000),
 (20240308, 'Salesman', 48000),
-(20240309, 'Accountant', 42000)
+(20240309, 'Accountant', 42000);

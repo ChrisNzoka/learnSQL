@@ -39,7 +39,7 @@ FROM
     employee_salary;
 
 
-
+-- Creating Labels ---
 SELECT 
     first_name, last_name, 'Old Lady' Label
 FROM

@@ -80,6 +80,7 @@ LEFT JOIN employee_demographics dem
 -- if we just switch this to a right join it basically just looks like an inner join
 -- that's because we are taking everything from the demographics table and only matches from the left or salary table. Since they have all the matches
 -- it looks kind of like an inner join
+
 SELECT *
 FROM employee_salary sal
 RIGHT JOIN employee_demographics dem
@@ -96,7 +97,6 @@ FROM employee_salary;
 
 -- what we could do is a secret santa so the person with the higher ID is the person's secret santa
 
-
 SELECT *
 FROM employee_salary emp1
 JOIN employee_salary emp2
@@ -110,8 +110,6 @@ JOIN employee_salary emp2
         ON emp1.employee_id + 1  = emp2.employee_id
     ;
 
-
-
 SELECT emp1.employee_id as emp_santa, emp1.first_name as santa_first_name, emp1.last_name as santa_last_name, emp2.employee_id, emp2.first_name, emp2.last_name
 FROM employee_salary emp1
 JOIN employee_salary emp2
@@ -121,13 +119,8 @@ JOIN employee_salary emp2
 -- So leslie is Ron's secret santa and so on -- Mark Brandanowitz didn't get a secret santa, but he doesn't deserve one because he broke Ann's heart so it's all good
 
 
-
-
-
-
--- Joining multiple tables
-
--- now we have on other table we can join - let's take a look at it
+-- Joining multiple tables --
+-- now we have another table we can join - let's take a look at it
 SELECT *
 FROM parks_and_recreation.parks_departments;
 

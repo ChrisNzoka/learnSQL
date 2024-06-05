@@ -63,9 +63,17 @@ This order is also why we cannot use the alias with HAVING, but we can with ORDE
 
 /*
 4. HAVING vs WHERE
-WHERE filters individual records while HAVING filters grouped records. We'll walk through two business questions here to show how to translate them into the correct filter. The first question is "What films were released in the year 2000?". This question does not indicate any sort of grouping. It asks to see only the titles from a specific year and can therefore be written as SELECT title, FROM films, WHERE release year equals 2000.
-The second question is, "In what years was the average film duration over two hours?". Straight away, we can see this question has a few more layers. Let's break down the question and query into smaller, easier-to-understand steps.
-This question requires us to return information about years, so we select the release year from the films table. Next, it asks for the average film duration, which tells us we need to place AVG(duration) somewhere. Since we do not need to provide any additional information around the duration on its own, it is unlikely we need to perform the aggregation within the SELECT clause, so we'll try the HAVING clause instead. The last part of the question indicates we need to filter on the duration. Since we can't filter aggregates with WHERE, this supports our theory about using HAVING!
+WHERE filters individual records while HAVING filters grouped records. We'll walk through two business questions here to show how to translate them into the correct filter. The first question is
+"What films were released in the year 2000?".
+This question does not indicate any sort of grouping. It asks to see only the titles from a specific year and can therefore be written as
+SELECT title
+FROM films
+WHERE release year = 2000;
+The second question is, 
+"In what years was the average film duration over two hours?"
+Straight away, we can see this question has a few more layers. Let's break down the question and query into smaller, easier-to-understand steps.
+This question requires us to return information about years, so we select the release year from the films table.
+Next, it asks for the average film duration, which tells us we need to place AVG(duration) somewhere. Since we do not need to provide any additional information around the duration on its own, it is unlikely we need to perform the aggregation within the SELECT clause, so we'll try the HAVING clause instead. The last part of the question indicates we need to filter on the duration. Since we can't filter aggregates with WHERE, this supports our theory about using HAVING!
 Finally, we need to add a GROUP BY into our query since we have selected a column that has not been aggregated. Recall the aggregate function will convert the duration values into one average value. Going back to the start of our question, we're interested in knowing the average duration per year, so we group it by release year.
 */
 

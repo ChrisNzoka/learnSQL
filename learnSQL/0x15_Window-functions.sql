@@ -38,7 +38,6 @@ JOIN employee_salary sal
         ON dem.employee_id = sal.employee_id
 ;
 
-
 -- now if we wanted to see what the salaries were for genders we could do that by using sum, but also we could use order by to get a rolling total
 
 SELECT dem.employee_id, dem.first_name, gender, salary,
@@ -89,7 +88,7 @@ JOIN employee_salary sal
         ON dem.employee_id = sal.employee_id
 ;
 
--- notice rank repeats on tom ad jerry at 5, but then skips 6 to go to 7 -- this goes based off positional rank
+-- notice rank repeats on tom and jerry at 5, but then skips 6 to go to 7 -- this goes based off positional rank
 
 
 -- let's compare this to dense rank
@@ -101,4 +100,3 @@ FROM employee_demographics dem
 JOIN employee_salary sal
         ON dem.employee_id = sal.employee_id
 ;
-

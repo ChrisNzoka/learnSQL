@@ -139,7 +139,7 @@ SELECT
 FROM
     employee_id
 WHERE
-    lastname IN ('Nzoka-okoye' , 'Scott');
+    lastname IN ('Nzoka-okoye', 'Scott');
 -- returns data for only the specified lastnames(alternative to using = multiple times)
 
 -- the IN keyword

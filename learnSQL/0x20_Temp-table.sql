@@ -45,6 +45,4 @@ FROM
     temp_table_2;
 
 -- this is the primary way I've used temp tables especially if I'm just querying data and have some complex data I want to put into boxes or these temp tables to use later
--- it helps me kind of categorize and separate it out
-
--- In the next lesson we will look at the Temp Tables vs CTEs
+-- it helps to categorize and separate records
