@@ -169,4 +169,63 @@ FROM
     employee_demographics dem
         JOIN
     employee_salary sal USING (employee_id);
-        
+    
+-- ---------------------------------------------------------------------------------------------------
+/* Question
+Select the incorrect answer from the following options.
+(a) There are at least three languages spoken in Armenia.
+(b) Alsatian is spoken in more than one country.
+(c) Bhojpuri is spoken in two countries.
+
+Note: The query you generated in step 1 is provided below.
+Run this query (or the amendment you made in step 2) in the console to find the answer to the question.
+
+SELECT c.name AS country, l.name AS language
+FROM countries AS c
+INNER JOIN languages AS l
+USING(code)
+ORDER BY country;
+*/
+
+-- Solution: To find the answer, let's run the join code and pass it through a CTE to verify each of the answer
+#1 checking if there are at least three languages spoken in Armenia
+WITH lang_count AS
+(
+SELECT c.name AS country, l.name AS language
+FROM countries AS c
+INNER JOIN languages AS l
+USING(code)
+ORDER BY country
+)
+Select country, count(language)
+from lang_count
+where country = 'Armenia'
+group by country;
+
+#2 checking if Bhojpuri is spoken in two countries
+WITH lang_count AS
+(
+SELECT c.name AS country, l.name AS language
+FROM countries AS c
+INNER JOIN languages AS l
+USING(code)
+ORDER BY country
+)
+Select country, count(language)
+from lang_count
+where language = 'Bhojpuri'
+group by country;
+
+#3 checking if Alsatian is spoken in more than one country.
+WITH lang_count AS
+(
+SELECT c.name AS country, l.name AS language
+FROM countries AS c
+INNER JOIN languages AS l
+USING(code)
+ORDER BY country
+)
+Select country, count(language)
+from lang_count
+where language = 'Alsatian'
+group by country;

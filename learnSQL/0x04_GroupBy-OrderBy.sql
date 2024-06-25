@@ -121,6 +121,7 @@ SELECT
 FROM
     films
 GROUP BY release_year;
+-- count(*) counts all the records for all fields unlike count(field_name) that only counts the records in the specified(field_name)
 
 -- Find the release_year and average duration of films for each year
 SELECT 
