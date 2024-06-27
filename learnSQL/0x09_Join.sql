@@ -1,8 +1,9 @@
 -- Joins
 
 -- joins allow you to combine 2 tables together (or more) if they have a common column.
--- doesn't mean they need the same column name, but the data in it are the same and can be used to join the tables together
--- there are several joins we will look at today, inner joins, outer joins, and self joins
+-- The common column doesn't need the same column name, but the data in it are the same and can be used to join the tables together
+-- there are several joins we will look at, INNER JOIN, OUTER JOIN (LEFT JOIN, RIGHT JOIN and FULL JOIN), self joins, CROSS JOIN
+-- check attached images for different joins
 /* Also, the order of execution is:
 FROM
 WHERE
@@ -229,3 +230,65 @@ Select country, count(language)
 from lang_count
 where language = 'Alsatian'
 group by country;
+
+-- from our findings, the incorrect answer is (b) Alsatian is spoken in more than one country.
+
+-- Modify this query to use RIGHT JOIN instead of LEFT JOIN
+/* SELECT countries.name AS country, languages.name AS language, percent
+FROM countries
+LEFT JOIN languages
+USING(code)
+ORDER BY language;
+*/
+-- Answer
+SELECT c.name AS country, l.name AS language, percent
+FROM languages AS l
+RIGHT JOIN countries AS c
+USING(code)
+ORDER BY language;
+
+-- CROSS JOIN -----------------------------------------------
+-- they create all possible combinations of two tables.
+/*
+CROSS JOIN can be incredibly helpful when asking questions that involve looking at all possible combinations or pairings between two sets of data.
+
+Imagine you are a researcher interested in the languages spoken in two countries: Pakistan and India. You are interested in asking:
+
+- What are the languages presently spoken in the two countries?
+- Given the shared history between the two countries,
+what languages could potentially have been spoken in either country over the course of their history?
+
+In this exercise, we will explore how INNER JOIN and CROSS JOIN can help us answer these two questions, respectively.
+*/
+
+-- What are the languages presently spoken in the two countries?
+SELECT c.name AS country, l.name AS language
+FROM countries AS c
+INNER JOIN languages AS l
+using (code)
+WHERE c.code IN ('PAK','IND')
+	AND l.code in ('PAK','IND');
+    
+-- what languages could potentially have been spoken in either country over the course of their history?
+SELECT c.name AS country, l.name AS language
+FROM countries AS c        
+-- Perform a cross join to languages (alias as l)
+CROSS JOIN languages AS l
+WHERE c.code in ('PAK','IND')
+	AND l.code in ('PAK','IND');
+
+-- random test
+SELECT 
+	c.name AS country,
+    region,
+    life_expectancy AS life_exp
+FROM countries AS c
+-- Join to populations (alias as p) using an appropriate join
+INNER JOIN populations AS p
+ON c.code = p.country_code
+-- Filter for only results in the year 2010
+WHERE year = 2010
+-- Sort by life_exp
+order BY life_exp
+-- Limit to five records
+LIMIT 5;
