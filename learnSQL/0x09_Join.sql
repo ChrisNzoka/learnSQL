@@ -21,21 +21,18 @@ FROM employee_demographics;
 SELECT *
 FROM employee_salary;
 
--- let's start with an inner join -- inner joins return rows that are the same in both columns
-
+-- INNER JOIN ----------------------------------------------------------------
+-- inner joins return rows that are the same in both columns
 -- since we have the same columns we need to specify which table they're coming from
 SELECT *
 FROM employee_demographics
 JOIN employee_salary
         ON employee_demographics.employee_id = employee_salary.employee_id;
-        
 -- the JOIN keyword defaults to INNER JOIN. Thus, "JOIN" is the same as "INNER JOIN"
-
 -- notice Ron Swanson isn't in the results? This is because he doesn't have an employee id in the demographics table. He refused to give his birth date or age or gender
 
 -- using aliasing!
 -- Aliasing employs the "AS" keyword to rename a column. For instance
-
 SELECT 
     occupation AS job
 FROM
@@ -64,9 +61,9 @@ INNER JOIN employee_salary sal
 -- When the column is unique to only one table, we don't need the table.column name.
 
 
--- OUTER JOINS
+-- OUTER JOINS ----------------------------------------------------------------
 
--- for outer joins we have a left and a right join
+-- for outer joins we have a left, right and full join
 -- a left join will take everything from the left table even if there is no match in the join, but will only return matches from the right table
 -- the exact opposite is true for a right join
 
@@ -86,18 +83,29 @@ SELECT *
 FROM employee_salary sal
 RIGHT JOIN employee_demographics dem
         ON dem.employee_id = sal.employee_id;
+        
+-- FULL JOIN joins all records of the selected fields with null values in cells that doesn't have a match
+SELECT name AS country, code, region, basic_unit
+FROM countries
+-- Join to currencies
+FULL JOIN currencies
+USING (code)
+-- Where region is North America or name is null
+WHERE (region = 'North America') OR (name IS NULL)
+ORDER BY region;
 
 
 
--- Self Join
+-- Self Join -----------------------------------------------------------
 
 -- a self join is where you tie a table to itself
+-- Here, ann alias is very important
 
 SELECT *
 FROM employee_salary;
 
 -- what we could do is a secret santa so the person with the higher ID is the person's secret santa
-
+-- here, we can use + and - on the parameters of the ON statement to alter the output
 SELECT *
 FROM employee_salary emp1
 JOIN employee_salary emp2
@@ -114,13 +122,23 @@ JOIN employee_salary emp2
 SELECT emp1.employee_id as emp_santa, emp1.first_name as santa_first_name, emp1.last_name as santa_last_name, emp2.employee_id, emp2.first_name, emp2.last_name
 FROM employee_salary emp1
 JOIN employee_salary emp2
-        ON emp1.employee_id + 1  = emp2.employee_id
-    ;
+        ON emp1.employee_id + 1  = emp2.employee_id;
+-- So leslie is Ron's secret santa and so on
 
--- So leslie is Ron's secret santa and so on -- Mark Brandanowitz didn't get a secret santa, but he doesn't deserve one because he broke Ann's heart so it's all good
-
-
--- Joining multiple tables --
+-- Next, let's compare records from 2010 and 2015 on a population database
+-- eliminate unwanted records by extending the WHERE statement to include only records where
+-- the p1.year matches p2.year - 5
+SELECT 
+    p1.country_code, p1.size AS size2010, p2.size AS size2015
+FROM
+    populations AS p1
+        INNER JOIN
+    populations AS p2 ON p1.country_code = p2.country_code
+WHERE
+    p1.year = 2010 AND p1.year = p2.year - 5;
+    
+    
+-- Joining multiple tables --------------------------------------------------------
 -- now we have another table we can join - let's take a look at it
 SELECT *
 FROM parks_and_recreation.parks_departments;
@@ -153,7 +171,7 @@ JOIN employee_salary sal
 Join parks_departments pd
 on sal.dept_id = pd.department_id;
 
--- Using USING
+-- Using USING -----------------------------------------------------------
 # When joining on two identical column names, we can employ the USING command
 # followed by the shared column name in parentheses.
 # Here, since the join field is named "employee_id" in both tables, we can use USING.
@@ -247,18 +265,22 @@ RIGHT JOIN countries AS c
 USING(code)
 ORDER BY language;
 
--- CROSS JOIN -----------------------------------------------
+-- CROSS JOIN -----------------------------------------------------------------
 -- they create all possible combinations of two tables.
 /*
-CROSS JOIN can be incredibly helpful when asking questions that involve looking at all possible combinations or pairings between two sets of data.
+CROSS JOIN can be incredibly helpful when asking questions that involve
+looking at all possible combinations or pairings between two sets of data.
 
-Imagine you are a researcher interested in the languages spoken in two countries: Pakistan and India. You are interested in asking:
+Imagine you are a researcher interested in the languages spoken in two countries:
+Pakistan and India. You are interested in asking:
 
 - What are the languages presently spoken in the two countries?
 - Given the shared history between the two countries,
-what languages could potentially have been spoken in either country over the course of their history?
+  what languages could potentially have been spoken in either country
+  over the course of their history?
 
-In this exercise, we will explore how INNER JOIN and CROSS JOIN can help us answer these two questions, respectively.
+In this exercise, we will explore how INNER JOIN and CROSS JOIN can help us
+answer these two questions, respectively.
 */
 
 -- What are the languages presently spoken in the two countries?
