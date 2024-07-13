@@ -1,6 +1,11 @@
 -- Case Statements
 -- Case statements works the same way as "WHERE" and "HAVING". However, it allows for multiple filtering
 -- Also, case statements comes immediatelt after the select statement
+/*
+CASE statements can be used to create columns for categorizing data "IN SELECT STATEMENT",
+and to filter data in the WHERE clause.
+We can also use CASE statements to aggregate data based on the result of a logical test.
+*/
 SELECT 
     first_name,
     last_name,
@@ -259,3 +264,16 @@ SELECT
     END AS outcome
 FROM
     matches_italy;
+
+-- Select the season, date, home_goal, and away_goal columns
+SELECT 
+	season,
+    date,
+	home_goal,
+	away_goal
+FROM matches_italy
+WHERE 
+-- Exclude games not won by Bologna
+	CASE WHEN hometeam_id = 9857 AND home_goal > away_goal THEN 'Bologna Win'
+		WHEN awayteam_id = 9857 AND away_goal < home_goal THEN 'Bologna Win' 
+		END IS NOT NULL;
