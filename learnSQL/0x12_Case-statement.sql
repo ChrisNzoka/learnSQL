@@ -11,7 +11,7 @@ SELECT
     last_name,
     CASE
         WHEN age <= 30 THEN 'Young'
-    END
+    END AS age_description	
 FROM
     employee_demographics;
 
@@ -22,7 +22,7 @@ SELECT
         WHEN age <= 30 THEN 'Young'
         WHEN age BETWEEN 31 AND 50 THEN 'Old'
         WHEN age >= 50 THEN 'On Death\'s Door'
-    END age_description
+    END AS age_description
 FROM
     employee_demographics;
 -- Poor Jerry
@@ -277,3 +277,32 @@ WHERE
 	CASE WHEN hometeam_id = 9857 AND home_goal > away_goal THEN 'Bologna Win'
 		WHEN awayteam_id = 9857 AND away_goal < home_goal THEN 'Bologna Win' 
 		END IS NOT NULL;
+        
+/*
+Do the number of soccer matches played in a given European country differ across seasons? We will use the European Soccer Database to answer this question.
+
+Let's examine the number of matches played in 3 seasons within each country listed in the database. This is much easier to explore with each season's matches in separate columns. Using the country and unfiltered match table, you will count the number of matches played in each country during the 2012/2013, 2013/2014, and 2014/2015 match seasons.
+*/
+SELECT 
+	c.name AS country,
+    -- Count games from the 2012/2013 season
+	COUNT(CASE WHEN m.season = '2012/2013' 
+        THEN m.id ELSE NULL END) AS matches_2012_2013
+FROM country AS c
+LEFT JOIN match AS m
+ON c.id = m.country_id
+-- Group by country name alias
+GROUP BY country;
+
+SELECT 
+	c.name AS country,
+    -- Count matches in each of the 3 seasons
+	Count(CASE WHEN m.season = '2012/2013' THEN m.id END) AS matches_2012_2013,
+	Count(CASE WHEN m.season = '2013/2014' THEN m.id END) AS matches_2013_2014,
+	Count(CASE WHEN m.season = '2014/2015' THEN m.id END) AS matches_2014_2015
+FROM country AS c
+LEFT JOIN match AS m
+ON c.id = m.country_id
+-- Group by country name alias
+GROUP BY country;
+
