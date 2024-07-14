@@ -3,10 +3,6 @@
 #Subqueries are queries within queries.
 -- Note: subqueries in a 'SELECT' statement are seen as a column thus require an Alias
 -- Also, subqueries in 'FROM' statements are seen as table and must be named using alias.
-
-SELECT *
-FROM employee_demographics;
-
 -- Subqueries in WHERE statements ---------------------------------------------------
 -- Here, we can have SEMI JOIN (USES "IN") and ANTI JOIN (USES "NOT IN")
 
@@ -263,3 +259,21 @@ AND metroarea_pop IS NOT NULL
 ORDER BY city_perc DESC
 LIMIT 10;
 -- We've identified the city with the highest percentage of people living in the city 'proper', relative to the wider metropolitan population!
+
+# generate a list of matches where the total goals scored (for both teams in total) is more than 3 times the average for games in the matches_2013_2014 table, which includes all games played in the 2013/2014 season.
+-- First, let's calculate triple the average home + away goals scored across all matches. This will become our subquery in the next step.
+-- Note that this column does not have an alias, so it will be called ?column? in our results.
+SELECT 
+	3 * avg(home_goal + away_goal)
+FROM matches_2013_2014;
+
+-- Next;
+SELECT 
+	-- Select the date, home goals, and away goals scored
+    date, home_goal, away_goal
+FROM  matches_2013_2014
+-- Filter for matches where total goals exceeds 3x the average
+WHERE (home_goal + away_goal) > 
+       (SELECT 3 * AVG(home_goal + away_goal)
+        FROM matches_2013_2014); 
+
