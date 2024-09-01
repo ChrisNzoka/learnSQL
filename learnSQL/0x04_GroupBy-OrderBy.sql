@@ -20,7 +20,8 @@ SELECT
     *
 FROM
     employee_id
-WHERE age is not null
+WHERE
+    age IS NOT NULL
 ORDER BY gender, age DESC;
 -- arranges the table in Ascending order of gender and descending order of age
 -- Also, 'is not null' ensures that only records with a recorded age is outputed
@@ -33,7 +34,7 @@ ORDER BY  age, gender DESC;
 -- arranges the table in Ascending order of age and descending order of gender
 -- (however, the age querry takes prescedence here making the gender useless)
 
--- We don't have to select the field we are sorting by
+-- NOTE: We don't have to select the field we are sorting by
 SELECT 
     first_name
 FROM
@@ -59,6 +60,7 @@ FROM
     films
 GROUP BY certificates;
 #We'll need to correct this by adding an aggregate function around title.
+
 SELECT 
     certificate, COUNT(title) sum_title
 FROM
@@ -101,7 +103,7 @@ SELECT
 FROM
     films
 GROUP BY certificates
-order by title_count;
+ORDER BY title_count;
 -- ORDER BY is always written after GROUP BY,
 -- and notice that we can refer back to the alias within the query.
 -- That is because of the order of execution.
@@ -121,7 +123,8 @@ SELECT
 FROM
     films
 GROUP BY release_year;
--- count(*) counts all the records for all fields unlike count(field_name) that only counts the records in the specified(field_name)
+-- count(*) counts all the records for all fields
+-- unlike count(field_name) that only counts the records in the specified(field_name)
 
 -- Find the release_year and average duration of films for each year
 SELECT 
@@ -130,7 +133,8 @@ FROM
     films
 GROUP BY release_year;
 
--- Find the release_year, country, and max_budget, then group and order by release_year and country
+-- Find the release_year, country, and max_budget,
+-- then group and order by release_year and country
 SELECT 
     release_year, country, MAX(budget) AS max_budget
 FROM
@@ -146,7 +150,7 @@ FROM
 GROUP BY release_year
 ORDER BY lang_count DESC;
 
--- HAVING --
+-- HAVING ------------------------------------------------------------------------------
 # In SQL, we can't filter aggregate functions with WHERE clauses.
 # For example, this query attempting to filter the title count is invalid:
 
@@ -163,7 +167,7 @@ SELECT
 FROM
     films
 GROUP BY release_year
-HAVING lang_count > 10;
+HAVING language > 10;
 
 /*. Order of execution
 The reason why groups have their own keyword for filtering comes down to the order of execution.

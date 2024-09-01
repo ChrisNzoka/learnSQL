@@ -11,7 +11,7 @@ SELECT
 FROM
     station_data
 WHERE
-    year = 2010;
+    year = '2010';
 -- selects only records with year = 2010
 
 SELECT 
@@ -49,9 +49,9 @@ WHERE
 SELECT 
     *
 FROM
-    employee_id
+    employee_demographics
 WHERE
-    id > 20240304 AND age >= 30;
+    employee_id > 20240304 AND age >= 30;
 -- this wil return data for all employees from 30 and above with employee ID greater than the specified
 
 SELECT 
@@ -65,7 +65,7 @@ WHERE
 SELECT 
     *
 FROM
-    employee_id
+    employee_demographics
 WHERE
     lastname LIKE '%M%';
 -- returns data for all lastnames with M in it(start, middle or end)
@@ -73,7 +73,7 @@ WHERE
 SELECT 
     *
 FROM
-    employee_id
+    employee_demographics
 WHERE
     lastname LIKE '%e';
 -- returns lastnames ending with e
@@ -81,7 +81,7 @@ WHERE
 SELECT 
     *
 FROM
-    employee_id
+    employee_demographics
 WHERE
     lastname NOT LIKE 'M%e';
 -- returns lastname that does not start with M and not ending with e

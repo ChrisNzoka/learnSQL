@@ -1,5 +1,5 @@
-INSERT INTO employee_id VALUES
-(20240301, 'Chris', 'Nzoka-Okoye', 26, Male),
+INSERT INTO employee_demographics VALUES
+(20240301, 'Chris', 'Nzoka-Okoye', 26, 'Male'),
 (20240302, 'Pam', 'Beasley', 30, 'Female'),
 (20240303, 'Dwight', 'Schrute', 29, 'Male'),
 (20240304, 'Angela', 'Martin', 31, 'Female'),

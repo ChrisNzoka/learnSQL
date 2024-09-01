@@ -21,13 +21,13 @@ SELECT DISTINCT
     (id)
 FROM
     employee_id;
--- selects specific information from the table
+-- selects unique information from the table
 
 
 SELECT 
-    id
+    id AS ticket_id
 FROM
-    employee_id AS ticket_id;
+    employee_id;
 -- prints the selected field with the name ticket_id on display
 
 SELECT 
@@ -43,9 +43,8 @@ FROM
     employee_id;
 -- alternatively, we can use the CONCAT() function to concatenate columns
 
-
 SELECT 
-    customer_id, name
+    customer_id, `name`
 FROM
     customer;
 -- selects only the specified columns, "customer_id, name", from the table
@@ -53,7 +52,7 @@ FROM
 SELECT 
     *, price * 1.07 AS TAXED_PRICE
 FROM
-    PRODUCT;
+    product;
 -- generates a calculated column called TAXED_PRICE that is 7% higher than PRICE.
 -- AS statement (this is known as an alias):
 
@@ -79,7 +78,7 @@ SELECT
     NAME, CITY || ', ' || STATE AS LOCATION
 FROM
     CUSTOMER;
--- concatenates the columns CITY and STATE into a new column termed LOCATION
+-- concatenates the columns CITY and STATE into a new column termed LOCATION for SQLite flavour
 
 SELECT 
     NAME,
@@ -93,10 +92,10 @@ FROM
 -- we can use count and distinct to count the exact number of unique entiries in a table.
 -- Count the distinct countries from the films table
 SELECT 
-    COUNT(DISTINCT country) count_distinct_countries
+    COUNT(DISTINCT country) AS count_distinct_countries
 FROM
     films;
--- If we reverse the keyword location, it;ll count first befor executing the distinct which multiplies the count value by itself
+-- If we reverse the keyword location, it;ll count first before executing the distinct which multiplies the count value by itself
 SELECT DISTINCT
     COUNT(country) count_distinct_countries
 FROM

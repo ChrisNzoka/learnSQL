@@ -63,5 +63,5 @@ SELECT
 FROM
     coats
 WHERE
-    buttons BETWEEN 2 AND 5
-        AND length = 'long'
+    (buttons BETWEEN 2 AND 5)
+        AND (length = 'long');

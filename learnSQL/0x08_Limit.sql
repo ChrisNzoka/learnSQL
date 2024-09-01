@@ -29,7 +29,7 @@ SELECT
 FROM
     employee_demographics
 ORDER BY first_name
-LIMIT 3 , 2;
+LIMIT 3, 2;
 
 -- this now says start at position 3 and take 2 rows after that
 -- this is not used a lot
@@ -46,4 +46,4 @@ SELECT
 FROM
     employee_demographics
 ORDER BY age DESC
-LIMIT 2 , 1;
+LIMIT 2, 1;

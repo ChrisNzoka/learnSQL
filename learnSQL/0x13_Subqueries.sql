@@ -277,3 +277,13 @@ WHERE (home_goal + away_goal) >
        (SELECT 3 * AVG(home_goal + away_goal)
         FROM matches_2013_2014); 
 
+
+
+-- our goal in this exercise is to generate a list of teams that never played a game in their home city. 
+SELECT 
+	-- Select the team long and short names
+	team_long_name, team_short_name
+FROM team 
+-- Exclude all values from the subquery
+WHERE team_api_id NOT IN
+     (SELECT DISTINCT hometeam_ID  FROM match);

@@ -2,7 +2,7 @@
 
 -- joins allow you to combine 2 tables together (or more) if they have a common column.
 -- The common column doesn't need the same column name, but the data in it are the same and can be used to join the tables together
--- there are several joins we will look at, INNER JOIN, OUTER JOIN (LEFT JOIN, RIGHT JOIN and FULL JOIN), self joins, CROSS JOIN
+-- there are several joins we will look at, INNER JOIN, OUTER JOIN (LEFT JOIN, RIGHT JOIN and FULL JOIN), SELF JOIN, CROSS JOIN
 -- check attached images for different joins
 /* Also, the order of execution is:
 FROM
